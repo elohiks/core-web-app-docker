@@ -11,8 +11,8 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'sc-acr-ag'
-  imageRepository: 'dotnetapp'
-  containerRegistry: 'acrag612.azurecr.io'
+  imageRepository: 'dotnetapp-u03'
+  containerRegistry: 'crteam1.azurecr.io'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
