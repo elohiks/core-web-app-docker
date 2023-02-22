@@ -11,8 +11,8 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'sc-acr-ag'
-  imageRepository: 'dotnetapp'
-  containerRegistry: 'acrag612.azurecr.io'
+  imageRepository: 'dotnetapp-u03'
+  containerRegistry: 'crteam1.azurecr.io'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -34,19 +34,3 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: 'latest'
-    
-    - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Azure Pass - Sponsorship(3ee584d2-9742-4a05-93a9-26b5a16709ec)'
-        appType: 'webAppContainer'
-        WebAppName: 'agwebappdockerdevops'
-        DockerNamespace: 'acrag612.azurecr.io'
-        DockerRepository: 'dotnetapp'
-        DockerImageTag: 'latest'
-    
-    - task: AzureAppServiceManage@0
-      inputs:
-        azureSubscription: 'Azure Pass - Sponsorship(3ee584d2-9742-4a05-93a9-26b5a16709ec)'
-        Action: 'Restart Azure App Service'
-        WebAppName: 'agwebappdockerdevops'
